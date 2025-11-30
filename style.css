@@ -51,7 +51,15 @@
     border-radius: 50%;
 }
 
-
-
+.pacman{
+    z-index: 2;
+    position: relative;
+    height: 80%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 50%;
+    background-color: yellow;
+}
 
 

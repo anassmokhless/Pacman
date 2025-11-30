@@ -19,22 +19,15 @@
     background-color: green;
     border-radius: 20px;
     z-index: 3;
+    display: flex;
+    justify-content: space-around;
 }
 
 .eyes{
-    position: absolute;
-    display: inline-block;
+    margin-top: 30px;
     height: 30%;
     width: 30%;
     border-radius: 10%;
     bottom: 45%;
     background-color: white;
-}
-
-.eyeleft{
-    left: 10%;
-}
-
-.eyereight{
-    right: 10%;
 }

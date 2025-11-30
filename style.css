@@ -17,17 +17,41 @@
     border: 1px solid black;
     border-radius: 20px;
     background-color: green;
-    border-radius: 20px;
+    border-radius: 40%;
     z-index: 3;
-    display: flex;
-    justify-content: space-around;
 }
 
 .eyes{
-    margin-top: 30px;
+    position: absolute;
+    display: inline-block;;
     height: 30%;
     width: 30%;
     border-radius: 10%;
     bottom: 45%;
     background-color: white;
+    border-radius: 50%;
 }
+
+.eyeleft{
+    left: 10%;
+}
+
+.eyeright{
+    right: 10%;
+}
+
+.eyes:after{
+    position: absolute;
+    bottom: 25%;
+    content: " ";
+    background-color: black;
+    height: 50%;
+    width: 50%;
+    left: 20%;
+    border-radius: 50%;
+}
+
+
+
+
+

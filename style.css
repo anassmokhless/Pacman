@@ -11,9 +11,8 @@
 
 .ghost{
     position: relative;
-    height: 100%;
+    height: 70%;
     width: 80%;
-    top: 0;
     left: 10%;
     border: 1px solid black;
     border-radius: 20px;
@@ -116,6 +115,7 @@
     cursor: grab;
     background-color: black;
     overflow: hidden;
+    display: grid;
 }
 
 .box{

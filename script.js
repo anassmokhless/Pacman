@@ -58,10 +58,18 @@ function createGhost(){
     let newGhost = g.ghost.cloneNode(true);
     newGhost.pos = 11 + ghosts.length;
     newGhost.style.display = 'block';
+    newGhost.counter = 0;
+    newGhost.dx = Math.floor(Math.random()*4);
     newGhost.style.backgroundColor = board[ghosts.length];
-    newGhost.namer = board[ghosts.length] + 'y';
+    newGhost.name = board[ghosts.length] + 'y';
+    newGhost.cool = 0;  
+    newGhost.speed = 5;
     ghosts.push(newGhost);
-    console.log(newGhost);
+}
+
+function changeDir(enemy){
+    enemy.dx = Math.floor(Math.random()*4);
+    enemy.counter = (Math.random()*10)+2;
 }
  
 function move(){
@@ -71,28 +79,83 @@ function move(){
             //console.log(ghosts);
             //placing movement of ghosts
             ghosts.forEach((ghost)=>{
+                ghost.cool--;
+
+                if(ghost.cool<0){
                 myBoard[ghost.pos].append(ghost);
+                ghost.counter--;
+                let oldPos = ghost.pos; //original ghost position
+                if(ghost.counter <=0){
+                    changeDir(ghost);
+                }
+                else{
+                    if(ghost.dx == 0){
+                        ghost.pos -= g.size;
+                    }
+                    else if(ghost.dx == 1){
+                        ghost.pos += g.size;
+                    }
+                    else if(ghost.dx == 2){
+                        ghost.pos += 1;
+                    }
+                    else if(ghost.dx == 3){
+                        ghost.pos -= 1;
+                    }
+                }
+
+                let valGhost = myBoard[ghost.pos]; //futurre ghost position
+                if(valGhost.t == 1){
+                    ghost.pos = oldPos;
+                    changeDir(ghost);
+                }
+                myBoard[ghost.pos].append(ghost);
+                ghost.cool = ghost.speed;
+                }
             })
+
             //Keyboard events movement of player
             let tempPos = player.pos; //current pos
-            if(keyz.ArrowRight){ 
+            if(keyz.ArrowRight)
+            { 
                 player.pos+=1;
-            }else if(keyz.ArrowLeft){
+                g.eye.style.left = "20%"
+                g.mouth.style.left = "60%"
+            }
+            else if(keyz.ArrowLeft)
+            {
                 player.pos-=1;
-            }else if(keyz.ArrowUp){
+                g.eye.style.left = "60%"
+                g.mouth.style.left = "0"
+            }
+            else if(keyz.ArrowUp)
+            {
                 player.pos -=g.size;
-            }else if(keyz.ArrowDown){
+            }
+            else if(keyz.ArrowDown)
+            {
                 player.pos +=g.size;
             }
             let newPlace = myBoard[player.pos]; //future position
-            if(newPlace.t == 1){
+            if(newPlace.t == 1)
+            {
                 console.log('wall');
                 player.pos = tempPos;
             }
-            if(newPlace.t == 2){
+            if(newPlace.t == 2)
+            {
                 console.log('dot');
                 myBoard[player.pos].innerHTML = '';
                 newPlace.t = 0;
+            }
+            if(player.pos != tempPos){ // / open and close mouth when moving
+                if(player.tog){
+                    g.mouth.style.height = "30%";
+                    player.tog = false;
+                }   
+                else{
+                    g.mouth.style.height = "10%";
+                    player.tog = true;
+                }
             }
             player.cool = player.speed; // set cooloff
  
@@ -124,13 +187,18 @@ function createGame(){
 function createSquare(val){
     const div = document.createElement('div');
     div.classList.add('box');
-    if(val == 1){ div.classList.add('wall');} //add wall to element
-    if(val == 2){ 
+    if(val == 1)
+    { 
+        div.classList.add('wall');
+    } //add wall to element
+    else if(val == 2)
+    { 
         const dot = document.createElement('div');
         dot.classList.add('dot');
         div.append(dot);
     } //add dot 
-    if(val == 3){ 
+    else if(val == 3)
+    { 
         const dot = document.createElement('div');
         dot.classList.add('superdot');
         div.append(dot);

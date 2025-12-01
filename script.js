@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     g.mouth = document.querySelector(".mouth"); //pacman mouth
     g.ghost = document.querySelector(".ghost"); //ghosts
     g.ghost.style.display = "none";
+    g.pacman.style.display= "none";
 
     createGame(); // create game board
 });
@@ -94,6 +95,7 @@ function move(){
         myBoard[ghost.pos].append(ghost);
     })
 
+    g.pacman.style.display= "block";
     myBoard[player.pos].append(g.pacman);
 }
 

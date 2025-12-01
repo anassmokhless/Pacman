@@ -10,10 +10,11 @@
 }
 
 .ghost{
-    position: relative;
-    height: 70%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 80%;
-    left: 10%;
     border: 1px solid black;
     border-radius: 20px;
     background-color: green;

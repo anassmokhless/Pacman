@@ -22,7 +22,7 @@ const g = {
     inplay:false
 }
 const player ={
-    pos:20,
+    pos:31,
     speed:4,
     cool:0,
     pause:false
@@ -86,7 +86,6 @@ function createGhost(){
     newGhost.pos = 11 + ghosts.length;
     newGhost.style.display = "block";
     newGhost.style.backgroundColor = board[ghosts.length];
-    newGhost.name = board[ghosts.length] + "y";
     ghosts.push(newGhost);
 }
 
@@ -94,5 +93,7 @@ function move(){
     ghosts.forEach((ghost)=>{
         myBoard[ghost.pos].append(ghost);
     })
+
+    myBoard[player.pos].append(g.pacman);
 }
 

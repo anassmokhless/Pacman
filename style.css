@@ -54,7 +54,7 @@
 
 .pacman{
     z-index: 2;
-    position: relative;
+    position: absolute;
     height: 80%;
     width: 80%;
     left: 10%;

@@ -22,11 +22,11 @@ const player = {
 }
  
 document.addEventListener('DOMContentLoaded',()=>{
-    g.grid =  document.querySelector('.grid'); ///gameBoard
-    g.pacman = document.querySelector('.pacman');///pacman
+    g.grid =  document.querySelector('.grid'); //gameBoard
+    g.pacman = document.querySelector('.pacman');//pacman
     g.eye = document.querySelector('.eye');
     g.mouth = document.querySelector('.mouth');
-    g.ghost = document.querySelector('.ghost');
+    g.ghost = document.querySelector('.ghost');//ghost
     g.ghost.style.display = 'none';
     g.pacman.style.display = 'none';
     createGame(); //create game board

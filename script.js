@@ -15,7 +15,7 @@ const tempBoard = [
 const keyz = {ArrowRight:false,ArrowLeft:false,ArrowUp:false,ArrowDown:false};
 const ghosts = [];
 const g = {
-    x:'',y:'',h:75,size:10,ghosts:6,inplay:false
+    x:'',y:'',h:50,size:10,ghosts:6,inplay:false
 }
 const player = {
     pos:32,speed:4,cool:0,pause:false
